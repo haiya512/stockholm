@@ -1,4 +1,4 @@
-import ystockquote
+import stockquote
 import time
 import datetime
 from datetime import date
@@ -23,7 +23,7 @@ def prices(symbol):
     _from = start_date
   else:
     _from = _from.strftime("%Y%m%d")
-  prices = ystockquote.get_historical_prices(symbol, _from, to)
+  prices = stockquote.get_historical_prices(symbol, _from, to)
   headers = prices[0]
   try:
     close = get_idx(headers, 'Close')
@@ -34,10 +34,14 @@ def prices(symbol):
     quotes = prices[1:]
     for l in quotes:
       #print "%s %s" % (l[date_], l[close])
-      insert(symbol, l[date_], l[close], l[high], l[low], l[open])
+      try:
+        insert(symbol, l[date_], l[close], l[high], l[low], l[open])
+      except Exception, e:
+        print "Could not insert %s:%s" % (symbol, e)
     print "Inserted %s new quotes for %s" % (len(quotes), symbol)
-  except:
+  except Exception, e:
     print "Could not download %s" % symbol
+    print e
 
 def get_idx(headers, query):
     for index, item in enumerate(headers):

@@ -319,7 +319,7 @@ class Quote(Base):
 
 class Indicator(Base):
   __cols__ = ['symbol',' date', 'sma_20', 'sma_50', 'atr_exp20', 'atr_14', 'll_10', 'hh_20', 'hh_50']
-  atr_stop = Decimal('2')
+  atr_stop = Decimal('3')
 
   def calculate_stop(self, price):
     return price - self.atr_exp20 * self.atr_stop

@@ -13,9 +13,9 @@ def find(account_value, filter):
   for quote in dao.Quote.get_latest_quotes():
     if not re.search(filter, quote.symbol):
       continue
-    if quote.is_above_20_day_high():
+    if True or quote.is_above_20_day_high():
       
-      if(quote.is_above_sma20() and quote.is_above_sma50()):
+      if(True or quote.is_above_sma20() and quote.is_above_sma50()):
         chart = "http://finance.yahoo.com/echarts?s=%s" % quote.symbol
         charts.append(chart)
 

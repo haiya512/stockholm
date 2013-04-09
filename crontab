@@ -1,0 +1,2 @@
+30 7 * * * /home/robcos/src/stockholm/run_all.sh >/dev/null
+43 20 * * * /home/robcos/src/stockholm/run_all.sh >/dev/null

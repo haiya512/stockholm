@@ -1,4 +1,4 @@
-from download import prices
+from today import prices
 
 ## OMX 30
 prices('ABB.ST')
